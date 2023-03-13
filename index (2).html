@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+
+        }
+        body{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .cards{
+            height: 250px;
+            min-width: 50px;
+            border: 2px solid black;
+            padding: 10px;
+            position: relative;
+        }
+        p{
+            text-align: center;
+            font-size: 30px;
+            background-color: silver;
+            color:red;
+            font-style: italic;
+        }
+        .btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* margin: auto; */
+            /* border: 1px solid red; */
+        }
+        .btn button{
+            background-color: blueviolet;
+            color: silver;
+            position: relative;
+            top: 25px;
+            padding: 15px;
+            font-size: 25px;
+            cursor: pointer;
+        }
+        .btn button:hover{
+            color: black;
+            background-color: green;
+        }
+        #message,#showotp{
+            position: relative;
+            top: 40px;
+            text-align: center;
+            /* border: 1px solid black; */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="cards">
+        <h1>OTP GENERATER MACHINE</h1>
+       
+        <div>
+        <p>Click here to generate your login OTP</p>
+    </div>
+    <div class="btn">
+        <button  id="btn1">Generate OTP </button>
+    </div>
+    <div id="message"></div>
+    <div id="showotp"></div>
+    </div>
+    <script>
+        let btn=document.getElementById('btn1')
+        let message=document.getElementById("message")
+        let otp_so=document.getElementById("showotp")
+        btn.addEventListener("click", sixdigit)
+        function generateOTP()
+        {
+            let otp=""
+            var value='0123456789'
+            for(var i=0;i<6;i++)
+            {
+                otp=otp+value[Math.floor(Math.random()*10)]
+
+            }
+            // console.log(otp);
+            return otp
+        }
+        function sixdigit()
+        {
+            let final_otp=generateOTP()
+            if(final_otp!='')
+            {
+                message.textContent='OTP is generated successfully'
+                message.style.border="2px solid green"
+                // message.style.backgroundColor="blue"
+                message.style.color='black'
+                message.style.fontSize="20px"
+                otp_so.textContent=final_otp
+                otp_so.style.backgroundColor=" black"
+                otp_so.style.color='white'
+                otp_so.style.border='3px solid yellow'
+                otp_so.style.fontSize="20px"
+            }
+            // return false
+            // if(message.textContent.value>2)
+            // {
+            //     message.style.display="none"
+            // }
+            console.log(final_otp);
+
+        }
+        // message.textContent='kjjhooi'
+
+    </script>
+</body>
+</html>
